@@ -228,21 +228,21 @@ export const StyledSection = styled.section<{ $show: boolean }>`
   }
   &.section-5 {
     flex-direction: column;
-    justify-content: unset;
+    justify-content: space-between;
 
     > h1 {
       font-weight: bold;
       font-size: 36px;
-      margin-bottom: 60px;
+      margin-bottom: 30px;
     }
 
     > ul {
-      flex: 1;
       width: 70%;
       display: flex;
       justify-content: center;
       font-size: 30px;
       font-weight: 600;
+      margin-bottom: 20px;
 
       li {
         cursor: pointer;
@@ -292,34 +292,34 @@ export const StyledSection = styled.section<{ $show: boolean }>`
       flex: 1;
       position: relative;
       width: 50%;
+      max-width: 500px;
       display: flex;
-      margin-bottom: 100px;
 
       > img {
         max-width: 500px;
-        max-height: 100%;
+        min-height: 200px;
+        max-height: 50%;
         position: absolute;
-        bottom: 50%;
+        bottom: 60%;
         transform: translateY(50%);
       }
 
       > p {
-        width: 50%;
-        min-height: 100px;
-        padding: 20px;
-
-        display: flex;
-        align-items: center;
+        width: 80%;
+        min-height: 50%;
+        max-height: 100%;
+        padding: 30px;
 
         position: absolute;
-        bottom: 50%;
+        bottom: 40%;
         transform: translateY(50%);
-        right: 0;
+        right: -100px;
 
         border-radius: 20px;
         background-color: rgba(241, 250, 238, 0.4);
         color: #1d3557;
         font-size: 18px;
+        overflow: hidden;
       }
     }
   }

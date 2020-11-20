@@ -20,6 +20,7 @@ import {
 import observationsImg from '../../assets/observations.svg';
 import typeofProffesionalImg from '../../assets/typeof-proffesional.svg';
 import ideasImg from '../../assets/ideas.svg';
+import motivesImg from '../../assets/motives.svg';
 
 const Landing: React.FC = () => {
   const [showSection, setShowSection] = useState([0, 1]);
@@ -144,7 +145,7 @@ const Landing: React.FC = () => {
               </li>
             </ul>
             <div>
-              <img src={ideasImg} alt="My Idea" />
+              <img src={motivesImg} alt="My Idea" />
               <p>{content.contentFour}</p>
             </div>
           </StyledSection>
