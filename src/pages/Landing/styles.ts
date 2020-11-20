@@ -237,54 +237,37 @@ export const StyledSection = styled.section<{ $show: boolean }>`
     }
 
     > ul {
-      width: 70%;
+      width: 100%;
+      max-width: 800px;
       display: flex;
-      justify-content: center;
-      font-size: 30px;
+      justify-content: space-between;
       font-weight: 600;
       margin-bottom: 20px;
 
       li {
-        cursor: pointer;
-
-        > span {
+        > button {
           position: relative;
+          background-color: unset;
         }
       }
 
-      li:first-child span {
-        color: #e63946;
+      li button::before {
+        right: 50%;
+        border-radius: 30px 0 0 30px;
       }
 
-      li:first-child span::before,
-      li:first-child span::after {
-        background-color: #e63946;
+      li button::after {
+        left: 50%;
+        border-radius: 0 30px 30px 0;
       }
 
-      li:not(:last-child) {
-        margin-right: 20%;
-      }
-
-      li span::before {
-        right: 45%;
-      }
-
-      li span::after {
-        left: 45%;
-      }
-
-      li span::before,
-      li span::after {
+      li button::before,
+      li button::after {
         content: '';
         display: block;
-        width: 55%;
         height: 3px;
         position: absolute;
         bottom: -5px;
-        background-color: #f1faee;
-        opacity: 1;
-        transition: all 0.4s ease-in-out;
-        border-radius: 30px;
       }
     }
 
@@ -306,6 +289,7 @@ export const StyledSection = styled.section<{ $show: boolean }>`
 
       > p {
         width: 80%;
+        min-width: 300px;
         min-height: 50%;
         max-height: 100%;
         padding: 30px;
@@ -323,6 +307,36 @@ export const StyledSection = styled.section<{ $show: boolean }>`
       }
     }
   }
+`;
+
+export const Motive = styled.button<{ $active: boolean }>`
+  cursor: pointer;
+  font-size: 30px;
+  font-family: 'Kaushan Script', cursive;
+  color: #f1faee;
+  transition: all 0.4s ease-in-out;
+
+  &::after,
+  &::before {
+    width: 0;
+    opacity: 0;
+    background-color: unset;
+    transition: all 0.6s;
+  }
+
+  ${({ $active }) =>
+    // eslint-disable-next-line operator-linebreak
+    $active &&
+    css`
+      color: #e63946;
+
+      &::after,
+      &::before {
+        background-color: #e63946;
+        opacity: 1;
+        width: 50%;
+      }
+    `}
 `;
 
 export const QuoteBox = styled.div`

@@ -15,6 +15,7 @@ import {
   StyledSection,
   QuoteBox,
   MyChevron,
+  Motive,
 } from './styles';
 
 import observationsImg from '../../assets/observations.svg';
@@ -25,6 +26,7 @@ import motivesImg from '../../assets/motives.svg';
 const Landing: React.FC = () => {
   const [showSection, setShowSection] = useState([0, 1]);
   const [sectionContent, setSectionContent] = useState(1);
+  const [motive, setMotive] = useState(1);
 
   // prettier-ignore
   const handleChevron = useCallback((direction) => {
@@ -37,6 +39,10 @@ const Landing: React.FC = () => {
         (direction === 'back' ? section - 1 : section + 1));
     }, sectionFadeTimeout);
   }, [sectionContent]);
+
+  const handleMotive = useCallback((motiveNum) => {
+    setMotive(motiveNum);
+  }, []);
 
   useEffect(() => {
     setShowSection([1, 1]);
@@ -134,20 +140,26 @@ const Landing: React.FC = () => {
           >
             <h1>Why focus & adaptability?</h1>
             <ul>
-              <li>
-                <span>Motive 01</span>
-              </li>
-              <li>
-                <span>Motive 02</span>
-              </li>
-              <li>
-                <span>Motive 03</span>
-              </li>
+              {[1, 2, 3].map((item) => (
+                <li key={`${item}`}>
+                  <Motive
+                    $active={motive === item}
+                    type="button"
+                    onClick={() => handleMotive(item)}
+                  >
+                    {`Motive ${item}`}
+                  </Motive>
+                </li>
+              ))}
             </ul>
-            <div>
-              <img src={motivesImg} alt="My Idea" />
-              <p>{content.contentFour}</p>
-            </div>
+            {motive === 1 && (
+              <div>
+                <img src={motivesImg} alt="My Idea" />
+                <p>{content.contentFour}</p>
+              </div>
+            )}
+            {motive === 2 && <div />}
+            {motive === 3 && <div />}
           </StyledSection>
         )}
         {/* prettier-ignore */}
